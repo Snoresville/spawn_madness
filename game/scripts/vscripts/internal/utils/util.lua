@@ -437,8 +437,36 @@ function TeleportVector()
 end
 
 function TeleportUnit(unit)
-	Timers:CreateTimer(1, function()
-		unit:SetAbsOrigin(TeleportVector())
-		-- FindClearSpaceForUnit(unit, , false)
+	Timers:CreateTimer(0.01, function()
+		local teleport = TeleportVector()
+		unit:SetAbsOrigin(teleport)
+		FindClearSpaceForUnit(unit, teleport, false)
 	end)
 end
+
+fuck_these_creeps = {
+	npc_dota_creep_badguys_melee = true,
+	npc_dota_creep_badguys_melee_upgraded = true,
+	npc_dota_creep_badguys_melee_upgraded_mega = true,
+	npc_dota_creep_badguys_ranged = true,
+	npc_dota_creep_badguys_ranged_upgraded = true,
+	npc_dota_creep_badguys_ranged_upgraded_mega = true,
+	npc_dota_creep_badguys_flagbearer = true,
+	npc_dota_creep_badguys_flagbearer_upgraded = true,
+	npc_dota_creep_badguys_flagbearer_upgraded_mega = true,
+	npc_dota_badguys_siege = true,
+	npc_dota_badguys_siege_upgraded = true,
+	npc_dota_badguys_siege_upgraded_mega = true,
+	npc_dota_creep_goodguys_ranged = true,
+	npc_dota_creep_goodguys_ranged_upgraded = true,
+	npc_dota_creep_goodguys_ranged_upgraded_mega = true,
+	npc_dota_creep_goodguys_flagbearer = true,
+	npc_dota_creep_goodguys_flagbearer_upgraded = true,
+	npc_dota_creep_goodguys_flagbearer_upgraded_mega = true,
+	npc_dota_creep_goodguys_melee = true,
+	npc_dota_creep_goodguys_melee_upgraded = true,
+	npc_dota_creep_goodguys_melee_upgraded_mega = true,
+	npc_dota_goodguys_siege = true,
+	npc_dota_goodguys_siege_upgraded = true,
+	npc_dota_goodguys_siege_upgraded_mega = true,
+}

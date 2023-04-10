@@ -22,16 +22,15 @@ end, nil)
 ListenToGameEvent("npc_spawned", function(keys)
 	-- for k,v in pairs(keys) do print("npc_spawned",k,v) end
 	local spawnedUnit = keys.entindex and EntIndexToHScript(keys.entindex)
+	-- print(spawnedUnit:GetUnitName())
 	
 	if spawnedUnit ~= nil then
-		if spawnedUnit:IsBuilding() and Buttings:GetValue("CUSTOM_GAME", "BUILDINGS") == 1 then
-			print(Buttings:GetValue("CUSTOM_GAME", "BUILDINGS"))
+		-- print(spawnedUnit:GetUnitName())
+		if spawnedUnit:IsHero() and Buttings:GetValue("CUSTOM_GAME", "HEROES") == 1 then
+			-- print(Buttings:GetValue("CUSTOM_GAME", "HEROES"), "heroes")
 			TeleportUnit(spawnedUnit)
-		elseif spawnedUnit:IsHero() and Buttings:GetValue("CUSTOM_GAME", "HEROES") == 1 then
-			print(Buttings:GetValue("CUSTOM_GAME", "HEROES"))
-			TeleportUnit(spawnedUnit)
-		elseif spawnedUnit:IsCreep() and Buttings:GetValue("CUSTOM_GAME", "CREEPS") == 1 then
-			print(Buttings:GetValue("CUSTOM_GAME", "CREEPS"))
+		elseif spawnedUnit:IsCreep() and Buttings:GetValue("CUSTOM_GAME", "JUNGLE") == 1 and not fuck_these_creeps[spawnedUnit:GetUnitName()] then
+			-- print(Buttings:GetValue("CUSTOM_GAME", "CREEPS"), "creeps")
 			TeleportUnit(spawnedUnit)
 		end
 	end
